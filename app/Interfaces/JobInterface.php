@@ -9,6 +9,6 @@ interface JobInterface
     public function create($data);
     public function updateById($id, $data);
     public function updateByIdHash($id, $data);
-    // public function deletedById($id);
+    public function deletedById($id);
     // public function deletedByIdHash($id);
 }

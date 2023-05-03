@@ -108,8 +108,8 @@ class CandidateContorller extends Controller
         $validator = Validator::make($request->all(), [
             'job_id' => 'required',
             'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|numeric',
+            'email' => 'required|email|unique:candidates,email',
+            'phone' => 'required|numeric|unique:candidates,phone',
             'year' =>  'required|integer',
         ], [
             'job_id.required' => 'Form :attribute harus diisi',
