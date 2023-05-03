@@ -1,0 +1,330 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Lamaran App",
+        "description": "Aplikasi Lamaran",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/candidate": {
+            "get": {
+                "tags": [
+                    "Api|Candidate"
+                ],
+                "summary": "Candidate index",
+                "operationId": "fff70709e578d9c09b9999a5797d069b",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/candidate/store": {
+            "post": {
+                "tags": [
+                    "Api|Candidate"
+                ],
+                "summary": "Lamaran store",
+                "operationId": "5e5c0eb96570f6844bae065cd3e4675c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "phone",
+                                    "year",
+                                    "skill",
+                                    "job_id"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "email"
+                                    },
+                                    "phone": {
+                                        "type": "numeric"
+                                    },
+                                    "year": {
+                                        "type": "numeric"
+                                    },
+                                    "skill[]": {
+                                        "type": "numeric"
+                                    },
+                                    "job_id": {
+                                        "type": "numeric"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Error"
+                    }
+                }
+            }
+        },
+        "/api/job": {
+            "get": {
+                "tags": [
+                    "Api|Job"
+                ],
+                "summary": "Job index",
+                "operationId": "07aee1de1490cc4cd8530a3300610d50",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/job/store": {
+            "post": {
+                "tags": [
+                    "Api|Job"
+                ],
+                "summary": "Job store",
+                "operationId": "bd6914ee4229bc0ed4156d51ec3e7c3f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/job/update/{id}": {
+            "put": {
+                "tags": [
+                    "Api|Job"
+                ],
+                "summary": "Job update",
+                "operationId": "06b8f5b3dddb08b02462bc9f2e8bcfd8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/job/{id}": {
+            "delete": {
+                "tags": [
+                    "Api|Job"
+                ],
+                "summary": "Job delete",
+                "operationId": "28fa567d616ec3a50685b09976006092",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/skill": {
+            "get": {
+                "tags": [
+                    "Api|Skill"
+                ],
+                "summary": "Skill index",
+                "operationId": "036a16818aa59ac9048d273679aa8e55",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/skill/store": {
+            "post": {
+                "tags": [
+                    "Api|Skill"
+                ],
+                "summary": "Skill store",
+                "operationId": "0142777bbdc028df2f0eaf4ad0d5043f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/skill/update/{id}": {
+            "put": {
+                "tags": [
+                    "Api|Skill"
+                ],
+                "summary": "Skill update",
+                "operationId": "3ee066dee594fa30c0657dfac22e8a40",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/skill/{id}": {
+            "delete": {
+                "tags": [
+                    "Api|Skill"
+                ],
+                "summary": "Skill delete",
+                "operationId": "ba42d6beed065068c0724fcba62d55a3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        }
+    }
+}
