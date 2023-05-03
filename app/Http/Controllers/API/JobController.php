@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Helpers\ApiFormatter;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\JobResource;
 use App\Interfaces\JobInterface;
 use App\Models\Job;
 use App\Models\Skill;
@@ -105,7 +106,12 @@ class JobController extends Controller
         $job = Job::create($validator->validate());
 
         if ($job) {
-            return ApiFormatter::createApi(200, 'Data Berhasil Disimpan', $job);
+            return (new JobResource($job))->additional([
+                'status' => [
+                    'code' => 200,
+                    'message' => 'Data berhasil disimpan'
+                ]
+            ])->response()->setStatusCode(200);
         } else {
             return ApiFormatter::createApi(400, 'Data Tidak Berhasil Disimpan', null);
         }
@@ -183,7 +189,12 @@ class JobController extends Controller
         );
 
         if ($job) {
-            return ApiFormatter::createApi(200, 'Data Berhasil Diubah', $job);
+            return (new JobResource($job))->additional([
+                'status' => [
+                    'code' => 200,
+                    'message' => 'Data berhasil disimpan'
+                ]
+            ])->response()->setStatusCode(200);
         } else {
             return ApiFormatter::createApi(400, 'Data Tidak Berhasil Diubah', null);
         }
@@ -216,7 +227,7 @@ class JobController extends Controller
         );
 
         if ($job) {
-            return ApiFormatter::createApi(200, 'Data Berhasil Dihapus', $job);
+            return ApiFormatter::createApi(200, 'Data Berhasil Dihapus', null);
         } else {
             return ApiFormatter::createApi(400, 'Data Tidak Berhasil Dihapus', null);
         }

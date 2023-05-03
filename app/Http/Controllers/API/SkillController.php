@@ -105,6 +105,8 @@ class SkillController extends Controller
                     'message' => 'Data berhasil disimpan'
                 ]
             ])->response()->setStatusCode(200);
+        } else {
+            return ApiFormatter::createApi(400, 'Data Tidak Berhasil Disimpan', null);
         }
     }
 
@@ -186,6 +188,8 @@ class SkillController extends Controller
                     'message' => 'Data berhasil diubah'
                 ]
             ])->response()->setStatusCode(200);
+        } else {
+            return ApiFormatter::createApi(400, 'Data Tidak Berhasil Diubah', null);
         }
     }
 

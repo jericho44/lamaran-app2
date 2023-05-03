@@ -12,8 +12,17 @@ class JobResource extends JsonResource
      *
      * @return array<string, mixed>
      */
-    public function toArray(Request $request): array
+    public function toArray($request)
     {
-        return parent::toArray($request);
+        $result = [
+            'id' => $this->id,
+            'name' => $this->name,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'deleted_at' => $this->deleted_at,
+            'job' => new CandidateResource($this->whenLoaded('job')),
+        ];
+
+        return $result;
     }
 }

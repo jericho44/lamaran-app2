@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Helpers\ApiFormatter;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CandidateResource;
 use App\Interfaces\CandidateInterface;
 use App\Models\Candidate;
 use App\Models\Job;
@@ -107,8 +108,8 @@ class CandidateContorller extends Controller
         $validator = Validator::make($request->all(), [
             'job_id' => 'required',
             'name' => 'required',
-            'email' => 'required|email|unique:candidates,email',
-            'phone' => 'required|numeric|unique:candidates,phone',
+            'email' => 'required|email',
+            'phone' => 'required|numeric',
             'year' =>  'required|integer',
         ], [
             'job_id.required' => 'Form :attribute harus diisi',
@@ -140,7 +141,12 @@ class CandidateContorller extends Controller
         $data = Candidate::where('id', '=', $candidate->id)->get();
 
         if ($data) {
-            return ApiFormatter::createApi(Response::HTTP_CREATED, 'Success', $data);
+            return (new CandidateResource($candidate))->additional([
+                'status' => [
+                    'code' => 200,
+                    'message' => 'Data berhasil disimpan'
+                ]
+            ])->response()->setStatusCode(200);
         } else {
             return ApiFormatter::createApi(Response::HTTP_BAD_REQUEST, 'Failed', $data);
         }
