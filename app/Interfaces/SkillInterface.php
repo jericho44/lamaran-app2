@@ -10,5 +10,6 @@ interface SkillInterface
     public function updateById($id, $data);
     public function updateByIdHash($id, $data);
     public function deletedById($id);
+    public function restoreById($id);
     // public function deletedByIdHash($id);
 }

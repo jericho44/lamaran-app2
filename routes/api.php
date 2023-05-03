@@ -26,11 +26,13 @@ Route::get('skill', [SkillController::class, 'index']);
 Route::post('skill/store', [SkillController::class, 'store']);
 Route::put('skill/update/{id}', [SkillController::class, 'update']);
 Route::delete('skill/{id}', [SkillController::class, 'destroy']);
+Route::get('skill/restore/{id}', [SkillController::class, 'restore']);
 
 Route::get('job', [JobController::class, 'index']);
 Route::post('job/store', [JobController::class, 'store']);
 Route::put('job/update/{id}', [JobController::class, 'update']);
 Route::delete('job/{id}', [JobController::class, 'destroy']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

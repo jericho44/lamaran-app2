@@ -63,8 +63,15 @@ class SkillRepository implements SkillInterface
 
     public function deletedById($id)
     {
-        $hotel = $this->findById($id);
+        $skill = $this->findById($id);
 
-        return $hotel->delete();
+        return $skill->delete();
+    }
+
+    public function restoreById($id)
+    {
+        $skill = Skill::onlyTrashed()->where('id', $id);
+
+        return $skill->restore();
     }
 }

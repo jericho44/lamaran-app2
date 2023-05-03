@@ -210,20 +210,14 @@
                 "tags": [
                     "Api|Skill"
                 ],
-                "summary": "Skill index",
+                "summary": "Skill Index",
                 "operationId": "036a16818aa59ac9048d273679aa8e55",
-                "parameters": [
-                    {
-                        "name": "data",
-                        "in": "query",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "Success"
+                    },
+                    "400": {
+                        "description": "Error"
                     }
                 }
             }
@@ -314,6 +308,29 @@
                         "name": "id",
                         "in": "path",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/skill/restore/{id}": {
+            "get": {
+                "tags": [
+                    "Api|Skill"
+                ],
+                "summary": "Skill Restore",
+                "operationId": "bee610dca8d7c389e2d3d1395f17b3a8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
                         "schema": {
                             "type": "string"
                         }
